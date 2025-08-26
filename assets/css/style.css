@@ -1,0 +1,15 @@
+/*  
+## 5) CSS additions: `assets/css/style.css` (append)
+
+Path: `wp-rentals/assets/css/style.css`
+
+Display/template styles 
+
+*/
+.wpr-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
+.wpr-list { display:block; }
+.wpr-card { border:1px solid #e6e6e6; padding:12px; border-radius:6px; background:#fff; }
+.wpr-card img { width:100%; height:160px; object-fit:cover; border-radius:4px; }
+.wpr-card h3 { margin:8px 0; font-size:16px; }
+.wpr-card-price { font-weight:700; margin-bottom:6px; }
+
