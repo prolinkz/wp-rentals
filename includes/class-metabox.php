@@ -81,6 +81,8 @@ class Metabox {
     }
 
     public function render_meta_box( $post ) {
+        // Enqueue media uploader scripts
+        wp_enqueue_media();
         // Nonce
         wp_nonce_field( 'wpr_save_property', 'wpr_property_nonce' );
 

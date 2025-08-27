@@ -21,6 +21,11 @@ while ( have_posts() ) : the_post();
     $video = get_post_meta( $id, '_wpr_video_url', true );
     $status = get_post_meta( $id, '_wpr_status', true );
     $amenities = ZK\Rentals\Metabox::get_amenities( $id );
+
+    // Get taxonomy terms
+    $property_types = get_the_terms( $id, 'property_type' );
+    $cities = get_the_terms( $id, 'property_city' );
+    $areas = get_the_terms( $id, 'property_area' );
     ?>
 
     <main id="main" class="site-main wpr-single-property" role="main" style="max-width:1100px;margin:20px auto;padding:0 16px;">
@@ -90,7 +95,7 @@ while ( have_posts() ) : the_post();
                     <div style="border:1px solid #eee;padding:12px;border-radius:6px;background:#fff;">
                         <h4><?php esc_html_e( 'Contact Owner', 'wp-rentals' ); ?></h4>
                         <p><?php esc_html_e( 'Use the form below to send an inquiry. The owner will get an email.', 'wp-rentals' ); ?></p>
-                        <?php echo do_shortcode( '[wpr_inquiry]' ); // Canvas 6 will implement this shortcode ?>
+                        <?php echo do_shortcode( '[wpr_inquiry]' ); ?>
                     </div>
 
                     <?php if ( get_post_meta( $id, '_wpr_lat', true ) && get_post_meta( $id, '_wpr_lng', true ) ) : ?>
@@ -116,23 +121,3 @@ while ( have_posts() ) : the_post();
 <?php
 endwhile;
 get_footer();
-
-
-
-
-## 6) Important: Template Loader Patch
-
-Your Core class `template_loader()` (in `includes/class-core.php`) currently looks for `rental_property` templates. Ensure it checks the actual post type `property`. Replace the method with this snippet:
-
-```php
-public function template_loader( $template ) {
-    if ( is_singular( 'property' ) ) {
-        $custom = $this->locate_template( 'single-property.php' );
-        if ( $custom ) return $custom;
-    }
-    if ( is_post_type_archive( 'property' ) ) {
-        $custom = $this->locate_template( 'archive-property.php' );
-        if ( $custom ) return $custom;
-    }
-    return $template;
-}

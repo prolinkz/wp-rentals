@@ -1,0 +1,43 @@
+/* Admin Styles for WP Rentals Plugin */
+
+.wpr-admin-header {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.wpr-admin-header h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.wpr-admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.wpr-admin-table th,
+.wpr-admin-table td {
+    border: 1px solid #e1e1e1;
+    padding: 10px;
+    text-align: left;
+}
+
+.wpr-admin-table th {
+    background-color: #f9f9f9;
+    font-weight: bold;
+}
+
+.wpr-admin-button {
+    background-color: #2c5aa0;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.wpr-admin-button:hover {
+    background-color: #1e3d72;
+}
